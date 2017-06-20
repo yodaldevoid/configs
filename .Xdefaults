@@ -1,0 +1,47 @@
+*background: #1B1D1E
+*foreground: #CCCCC6
+
+!black
+*color0:  #1B1D1E
+*color8:  #505354
+!red
+*color1:  #F92672
+*color9:  #FF5995
+!green
+*color2:  #82B414
+*color10: #B6E354
+!yellow
+*color3:  #FD971F
+*color11: #FEED6C
+!blue
+*color4:  #4E82AA
+*color12: #0C73C2
+!magenta
+*color5:  #8C54FE
+*color13: #9E6FFE
+!cyan
+*color6:  #465457
+*color14: #899CA1
+!white
+*color7:  #CCCCC6
+*color15: #F8F8F2
+
+URxvt.font: 6x13,xft:Symbola
+
+URxvt*skipScroll: False
+URxvt*urgentOnBell: True
+URxvt*scrollstyle: plain
+URxvt*scrollBar_right: True
+URxvt*scrollTtyOutput: False
+URxvt*scrollWithBuffer: True
+URxvt*scrollTtyKeypress: True
+URxvt*saveLines: 5000
+URxvt*secondaryScreen: True
+URxvt*secondaryScroll: False
+
+URxvt*perl-ext-common: default,matcher,vtwheel
+
+! open URLs by clicking on them
+URxvt*url-launcher: /usr/bin/xdg-open
+URxvt*matcher.button: 1
+URxvt*matcher.rend.0: Uline Bold fg5
