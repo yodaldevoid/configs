@@ -1,0 +1,9 @@
+[Unit]
+Description=Update the background based on the time
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0 XAUTHORITY=/home/yodal/.Xauthority
+ExecStartPre=/usr/bin/test -d /home/yodal/.local/share/backgrounds/8BitDay/
+ExecStartPre=/home/yodal/.local/share/backgrounds/8BitDay/set.py
+ExecStart=/usr/bin/feh --no-fehbg --bg-fill /home/yodal/.local/share/backgrounds/8BitDay/now.png

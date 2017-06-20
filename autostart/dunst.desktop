@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Dunst
+GenericName=Notification Daemon
+Exec=dunst
+Terminal=false
+Type=Application
+StartupNotify=false

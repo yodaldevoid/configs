@@ -1,0 +1,10 @@
+[Unit]
+Description=Update the background at specific times
+
+[Timer]
+OnCalendar=2,5,6,7,9,11,14,18,19,20,21,22:00
+Persistent=true
+RandomizedDelaySec=5
+
+[Install]
+WantedBy=timers.target

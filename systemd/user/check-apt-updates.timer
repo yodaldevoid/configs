@@ -1,0 +1,10 @@
+[Unit]
+Description=Check for APT package updates
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=60
+
+[Install]
+WantedBy=timers.target
