@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ln -srbT .bashrc ~/.bashrc
+ln -srbT .Xdefaults ~/.Xdefaults
+ln -srT bin ~/.bin
+
+ln -srT autostart ~/.config/autostart
+ln -srT dunst ~/.config/dunst
+ln -srT i3 ~/.config/i3
+ln -srT i3status ~/.config/i3status
+ln -srT systemd ~/.config/systemd
