@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -116,8 +116,17 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# for PPA generation
-export DEBFULLNAME="Gabriel Smith"
-export DEBMAIL="ga29smith@gmail.com"
+export EDITOR="subl -w"
 
-[ "$DISPLAY" ] && xset b 100
+man() {
+    env \
+        LESS_TERMCAP_md=$'\e[1;36m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[1;40;92m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[1;32m' \
+            man "$@"
+}
+
+[ "$DISPLAY" ] && xset b 80
