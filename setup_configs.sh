@@ -9,3 +9,4 @@ ln -srT dunst ~/.config/dunst
 ln -srT i3 ~/.config/i3
 ln -srT i3status ~/.config/i3status
 ln -srT systemd ~/.config/systemd
+ln -srT urxvt ~/.urxvt
