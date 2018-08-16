@@ -13,8 +13,8 @@ general {
 }
 
 order += "disk /"
-order += "disk /home/yodal"
-order += "disk /data"
+#order += "disk /home/gsmith"
+#order += "disk /data"
 #order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
@@ -51,7 +51,7 @@ disk "/data" {
         format = "d: %avail"
 }
 
-disk "/home/yodal" {
+disk "/home/gsmith" {
         format = "~: %avail"
 }
 
