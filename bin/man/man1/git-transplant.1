@@ -1,0 +1,118 @@
+'\" t
+.\"     Title: git-transplant
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 06/18/2018
+.\"    Manual: Git Manual
+.\"    Source: Git 1.8.0.1.20591.g28d17e11f4
+.\"  Language: English
+.\"
+.TH "GIT\-TRANSPLANT" "1" "06/18/2018" "Git 1\&.8\&.0\&.1\&.20591\&.g2" "Git Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+git-transplant \- Transplant commits from current branch to another
+.SH "SYNOPSIS"
+.sp
+.nf
+\fIgit transplant\fR [<options>] <revision range> <destination branch>
+.fi
+.sp
+.SH "DESCRIPTION"
+.sp
+Transplant a range of commits from the current branch onto or into another, removing them from the original branch, which will remain checked out upon completion\&. The commits can optionally be inserted inside the destination branch, i\&.e\&. not at its tip, using the \fB\-\-after\fR option\&.
+.sp
+The revision range is specified in the standard format accepted by \fBgit rev\-parse\fR, e\&.g\&.
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+A\&.\&.B
+A\&.\&.\&.B
+A^!   (just commit A)
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Obviously this command rewrites history! As with \fBgit-rebase\fR(1), you should be aware of all the implications of history rewriting before using it\&. In particular, if the range does not include the tip of the source branch, there is a risk of conflicts once the remainder of the source branch is rebased with the commits removed\&.
+.sp
+This command is actually just a glorified wrapper around \fBgit-splice\fR(1)\&.
+.SH "OPTIONS"
+.PP
+\-a <commit>, \-\-after=<commit>
+.RS 4
+Transplant into inside the destination branch after the given commit\&.
+.RE
+.PP
+\-n <commit>, \-\-new\-from=<commit>
+.RS 4
+First create the destination branch starting at the given commit\&.
+.RE
+.PP
+\-\-abort
+.RS 4
+Abort an in\-progress transplant\&.
+.RE
+.PP
+\-\-continue
+.RS 4
+Resume an in\-progress transplant\&.
+.RE
+.sp
+\-\-in\-progress: Exit 0 if and only if a splice is in progress\&.
+.SH "EXAMPLES"
+.PP
+\fBgit transplant A\&.\&.B X\fR
+.RS 4
+Move commits A\&.\&.B from the current branch onto branch X\&.
+.RE
+.PP
+\fBgit transplant \-\-after=C A\&.\&.B X\fR
+.RS 4
+Move commits A\&.\&.B from the current branch into branch X after commit C\&.
+.RE
+.PP
+\fBgit transplant \-\-new\-from=Y A\&.\&.B X\fR
+.RS 4
+Create a new branch X starting at ref Y, then move commits A\&.\&.B from the current branch onto X\&.
+.RE
+.PP
+\fBgit transplant \-\-abort\fR
+.RS 4
+Abort a transplant which failed during cherry\-pick or rebase
+.RE
+.PP
+\fBgit transplant \-\-continue\fR
+.RS 4
+Resume a transplant after manually fixing conflicts caused by cherry\-pick or rebase\&.
+.RE
+.PP
+\fBgit transplant \-\-in\-progress && git transplant \-\-abort\fR
+.RS 4
+Abort if there is a transplant in progress\&.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBgit-splice\fR(1), \fBgit-rebase\fR(1), \fBgit-cherry-pick\fR(1)
+.SH "GIT"
+.sp
+Part of the \fBgit\fR(1) suite

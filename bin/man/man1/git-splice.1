@@ -1,0 +1,143 @@
+'\" t
+.\"     Title: git-splice
+.\"    Author: [FIXME: author] [see http://docbook.sf.net/el/author]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 06/18/2018
+.\"    Manual: Git Manual
+.\"    Source: Git 1.8.0.1.20591.g28d17e11f4
+.\"  Language: English
+.\"
+.TH "GIT\-SPLICE" "1" "06/18/2018" "Git 1\&.8\&.0\&.1\&.20591\&.g2" "Git Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+git-splice \- Splice commits into/out of current branch
+.SH "SYNOPSIS"
+.sp
+.nf
+\fIgit splice\fR <insertion point> <cherry pick range>
+\fIgit splice\fR <insertion point> \-\- <cherry pick range args \&...>
+\fIgit splice\fR [\-r|\-\-root] <remove range> [<cherry pick range>]
+\fIgit splice\fR [\-r|\-\-root] <remove range args \&...> \-\- [<cherry pick range args \&...>]
+\fIgit splice\fR (\-\-abort | \-\-continue | \-\-in\-progress)
+.fi
+.sp
+.SH "DESCRIPTION"
+.sp
+Non\-interactively splice branch by removing a range of commits from within the current branch, and/or cherry\-picking a range of commits into the current branch\&.
+.sp
+<remove range> specifies the range of commits to remove from the current branch, and <cherry\-pick\-range> specifies the range to insert at the point where <remove\-range> previously existed, or just after <insertion\-point>\&.
+.sp
+<insertion point> is a commit\-ish in the standard format accepted by \fBgit-rev-parse\fR(1)\&.
+.sp
+<remove range> and <cherry pick range> are single shell words specifying commit ranges in the standard format accepted by \fBgit-rev-list\fR(1), e\&.g\&.
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+A\&.\&.B
+A\&.\&.\&.B
+A^!   (just commit A)
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+It is possible to pass multi\-word specifications for both the removal and insertion ranges, in which case they are passed to \fBgit-rev-list\fR(1) to calculate the commits to remove or cherry\-pick\&. For this you need to terminate <remove range args> with \fB\-\-\fR to indicate that the multi\-word form of parameters is being used\&.
+.sp
+When the \fB\-\-root\fR option is present, a removal range can be specified as a commit\-ish in the standard format accepted by \fBgit-rev-parse\fR(1), in which case the commit\-ish is treated as a range\&. This makes it possible to remove or replace root (i\&.e\&. parentless) commits\&.
+.sp
+Currently git\-splice assumes that all commits being operated on have a single parent; removal and insertion of merge commits is not supported\&.
+.sp
+N\&.B\&. Obviously this command rewrites history! As with \fBgit-rebase\fR(1), you should be aware of all the implications of history rewriting before using it\&. (And actually this command is just a glorified wrapper around \fBgit-cherry-pick\fR(1) and \fBgit-rebase\fR(1) in interactive mode\&.)
+.SH "OPTIONS"
+.PP
+\-r, \-\-root
+.RS 4
+Treat (each) removal range argument as a commit\-ish, and remove all its ancestors\&.
+.RE
+.PP
+\-\-abort
+.RS 4
+Abort an in\-progress splice\&.
+.RE
+.PP
+\-\-continue
+.RS 4
+Resume an in\-progress splice\&.
+.RE
+.PP
+\-\-in\-progress
+.RS 4
+Exit 0 if and only if a splice is in progress\&.
+.RE
+.SH "EXAMPLES"
+.PP
+\fBgit splice A\&.\&.B\fR
+.RS 4
+Remove commits A\&.\&.B (i\&.e\&. excluding A) from the current branch\&.
+.RE
+.PP
+\fBgit splice A^!\fR
+.RS 4
+Remove commit A from the current branch\&.
+.RE
+.PP
+\fBgit splice \-\-root A\fR
+.RS 4
+Remove commit A and all its ancestors (including the root commit) from the current branch\&.
+.RE
+.PP
+\fBgit splice A\&.\&.B C\&.\&.D\fR
+.RS 4
+Remove commits A\&.\&.B from the current branch, and cherry\-pick commits C\&.\&.D at the same point\&.
+.RE
+.PP
+\fBgit splice A C\&.\&.D\fR
+.RS 4
+Cherry\-pick commits C\&.\&.D, splicing them in just after commit A\&.
+.RE
+.PP
+\fBgit splice \-\-since=11am \-\-grep="foo" \-\-\fR
+.RS 4
+Remove all commits since 11am this morning mentioning "foo"\&.
+.RE
+.PP
+\fBgit splice \-\-abort\fR
+.RS 4
+Abort a splice which failed during cherry\-pick or rebase\&.
+.RE
+.PP
+\fBgit splice \-\-continue\fR
+.RS 4
+Resume a splice after manually fixing conflicts caused by cherry\-pick or rebase\&.
+.RE
+.PP
+\fBgit splice \-\-in\-progress && git splice \-\-abort\fR
+.RS 4
+Abort if there is a splice in progress\&.
+.RE
+.SH "SEE ALSO"
+.sp
+\fBgit-transplant\fR(1), \fBgit-rebase\fR(1), \fBgit-cherry-pick\fR(1)
+.SH "GIT"
+.sp
+Part of the \fBgit\fR(1) suite
