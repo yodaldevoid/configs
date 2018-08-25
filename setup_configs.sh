@@ -3,6 +3,7 @@
 ln -srbT .profile ~/.profile
 ln -srbT .bashrc ~/.bashrc
 ln -srbT .Xdefaults ~/.Xdefaults
+ln -srbT .xinitrc ~/.xinitrc
 ln -srT bin ~/.bin
 
 ln -srT autostart ~/.config/autostart
