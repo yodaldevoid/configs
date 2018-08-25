@@ -132,4 +132,6 @@ man() {
 
 [ "$DISPLAY" ] && xset b 80
 
-source $HOME/.cargo/env
+if [ -f $HOME/.cargo/env ] ; then
+    source $HOME/.cargo/env
+fi
