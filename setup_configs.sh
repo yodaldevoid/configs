@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ln -srbT .profile ~/.profile
 ln -srbT .bashrc ~/.bashrc
 ln -srbT .Xdefaults ~/.Xdefaults
 ln -srT bin ~/.bin
