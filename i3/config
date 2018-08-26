@@ -149,8 +149,6 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # brightli
 # Touchpad controls
 bindsym XF86TouchpadToggle exec toggle_touchpad # toggle touchpad
 
-bindsym XF86KbdLightOnOff exec kbd_backlight # toggle keyboard backlight
-
 bindsym $mod+f exec nautilus --new-window
 bindsym $mod+c exec toggle_screen_sleep
 
@@ -171,9 +169,6 @@ bar {
         bindsym button4 nop
         bindsym button5 nop
 }
-
-bindsym Control+Shift+XF86WLAN exec --no-startup-id rfkill block `rfkill list bluetooth | grep hci | cut -c 1`
-bindsym Control+XF86WLAN exec --no-startup-id rfkill unblock `rfkill list bluetooth | grep hci | cut -c 1`
 
 bindsym Mod4+p exec --no-startup-id switch_monitor_config
 
