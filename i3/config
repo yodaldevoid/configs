@@ -175,4 +175,4 @@ bindsym Control+Shift+XF86WLAN exec --no-startup-id rfkill block `rfkill list bl
 bindsym Control+XF86WLAN exec --no-startup-id rfkill unblock `rfkill list bluetooth | grep hci | cut -c 1`
 
 exec --no-startup-id dex -a -e i3
-exec --no-startup-id feh --bg-fill --no-fehbg /usr/local/share/backgrounds/8BitDay/now.png
+exec --no-startup-id feh --bg-fill --no-fehbg ~/.local/share/backgrounds/8BitDay/now.png
