@@ -146,9 +146,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # brightlight -p -i 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # brightlight -p -d 10
 
-# Touchpad controls
-bindsym XF86TouchpadToggle exec toggle_touchpad # toggle touchpad
-
 bindsym $mod+f exec nautilus --new-window
 bindsym $mod+c exec toggle_screen_sleep
 
