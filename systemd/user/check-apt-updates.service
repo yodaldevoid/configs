@@ -3,6 +3,6 @@ Description=Check for APT package updates
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/test -d /home/yodal/.cache
-ExecStart=/bin/sh -c '/usr/lib/update-notifier/apt-check 2> /home/yodal/.cache/apt-updates'
+ExecStartPre=/usr/bin/test -d %h/.cache
+ExecStart=/bin/sh -c '/usr/lib/update-notifier/apt-check 2> %h/.cache/apt-updates'
 KillMode=control-group
