@@ -151,7 +151,8 @@ bindsym XF86TouchpadToggle exec toggle_touchpad # toggle touchpad
 
 bindsym XF86KbdLightOnOff exec kbd_backlight # toggle keyboard backlight
 
-bindsym $mod+f exec toggle_screen_sleep
+bindsym $mod+f exec nautilus --new-window
+bindsym $mod+c exec toggle_screen_sleep
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
