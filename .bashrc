@@ -137,3 +137,5 @@ man() {
 if [ -f $HOME/.cargo/env ] ; then
     source $HOME/.cargo/env
 fi
+
+eval `keychain --quiet --systemd --eval --ignore-missing d3_rsa github_personal_rsa`

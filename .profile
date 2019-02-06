@@ -29,6 +29,6 @@ if [ -d "$HOME/.cargo/bin" ] ; then
     PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-eval `keychain --ignore-missing --nogui --eval git_ssh_rsa github`
+eval `keychain --quiet --systemd --eval --noask --quick`
 
 /usr/local/bin/tdm && exit
