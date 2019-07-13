@@ -31,5 +31,4 @@ fi
 
 eval `keychain --ignore-missing --nogui --eval git_ssh_rsa github`
 
-source tdm
-logout
+/usr/local/bin/tdm && exit
