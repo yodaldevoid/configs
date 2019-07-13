@@ -26,7 +26,7 @@
 *color7:  #CCCCC6
 *color15: #F8F8F2
 
-URxvt.font: 6x13,xft:Symbola
+URxvt.font: 7x14,xft:Symbola
 
 URxvt*skipScroll: False
 URxvt*urgentOnBell: True
