@@ -138,4 +138,7 @@ if [ -f $HOME/.cargo/env ] ; then
     source $HOME/.cargo/env
 fi
 
+#Lattice Diamond
+export PATH=$PATH:"/usr/local/diamond/3.10_x64/bin/lin64"
+
 eval `keychain --quiet --systemd --eval --ignore-missing github bitbucket_rsa`
