@@ -5,6 +5,8 @@ ln -srbT .bashrc ~/.bashrc
 ln -srbT .Xdefaults ~/.Xdefaults
 ln -srbT .xinitrc ~/.xinitrc
 ln -srT bin ~/.bin
+mkdir -p ~/.local/share/bash-completion
+ln -srT bash_completions ~/.local/share/bash-completion/completions
 
 ln -srT autostart ~/.config/autostart
 ln -srT dunst ~/.config/dunst
