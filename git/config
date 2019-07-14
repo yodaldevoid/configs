@@ -17,3 +17,5 @@
 	cmd = smerge mergetool \"$BASE\" \"$REMOTE\" \"$LOCAL\" -o \"$MERGED\"
 [merge]
 	tool = "Sublime Text"
+[alias]
+	oneline = log --oneline
