@@ -141,4 +141,4 @@ fi
 #Lattice Diamond
 export PATH=$PATH:"/usr/local/diamond/3.10_x64/bin/lin64"
 
-eval `keychain --quiet --systemd --eval --ignore-missing github bitbucket_rsa`
+eval `keychain --quiet --systemd --eval --ignore-missing d3_rsa gerrit github_personal_rsa tx2-rsp`
