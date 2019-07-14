@@ -1,0 +1,6 @@
+[Unit]
+Description=Check for low battery and notify if low or critical
+
+[Service]
+Type=simple
+ExecStart=%h/.bin/notify_low_battery.sh
