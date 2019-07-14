@@ -13,6 +13,7 @@ ln -srT i3status ~/.config/i3status
 ln -srT systemd ~/.config/systemd
 ln -srT urxvt ~/.urxvt
 ln -srbT gtk-3.0-settings.ini ~/.config/gtk-3.0/settings.ini
+ln -srT git ~/.config/git
 
 ln -srT icons ~/.local/share/icons
 ln -srT backgrounds ~/.local/share/backgrounds

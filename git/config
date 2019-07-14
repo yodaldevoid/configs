@@ -1,0 +1,19 @@
+[user]
+	name = Gabriel Smith
+[color]
+	ui = auto
+[rebase]
+	autosquash = true
+[pull]
+	rebase = true
+[core]
+	pager = less -x4
+[init]
+	templateDir = ~/.config/git/templates
+[mergetool "Sublime Text"]
+	cmd = subl -w $MERGED
+	trustExitCode = false
+[mergetool "Sublime Merge"]
+	cmd = smerge mergetool \"$BASE\" \"$REMOTE\" \"$LOCAL\" -o \"$MERGED\"
+[merge]
+	tool = "Sublime Text"
