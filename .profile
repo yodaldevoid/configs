@@ -31,4 +31,6 @@ fi
 
 eval `keychain --quiet --systemd --eval --noask --quick`
 
-/usr/local/bin/tdm && exit
+if [ -f "/usr/local/bin/tdm" ] ; then
+    /usr/local/bin/tdm && exit
+fi
