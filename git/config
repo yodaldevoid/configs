@@ -19,3 +19,5 @@
 	tool = "Sublime Text"
 [alias]
 	oneline = log --oneline
+[commit]
+	verbose = true
