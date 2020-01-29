@@ -2,7 +2,8 @@
 Description=Check for low battery and notify if low or critical
 
 [Timer]
-OnActiveSec=10 min
+OnStartupSec=10 min
+OnUnitActiveSec=10 min
 Persistent=true
 RandomizedDelaySec=60
 
