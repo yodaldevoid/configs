@@ -175,5 +175,7 @@ bar {
 bindsym Control+Shift+XF86WLAN exec --no-startup-id rfkill block `rfkill list bluetooth | grep hci | cut -c 1`
 bindsym Control+XF86WLAN exec --no-startup-id rfkill unblock `rfkill list bluetooth | grep hci | cut -c 1`
 
+bindsym Mod4+p exec --no-startup-id switch_monitor_config
+
 exec --no-startup-id dex -a -e i3
 exec --no-startup-id "~/.local/share/backgrounds/8BitDay/set.py; feh --bg-fill --no-fehbg ~/.local/share/backgrounds/8BitDay/now.png"
