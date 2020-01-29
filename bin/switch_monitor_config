@@ -1,0 +1,22 @@
+#!/bin/bash
+
+mons_connected=0; mons_on=0
+for status in /sys/class/drm/*/status; do
+    [ "$(<"$status")" = 'connected' ] && mons_connected=$((mons_connected+1))
+done
+
+for enabled in /sys/class/drm/*/enabled; do
+    [ "$(<"$enabled")" = 'enabled' ] && mons_on=$((mons_on+1))
+done
+
+if [ "$mons_connected" != "$prev" ]; then
+    echo "$mons_connected monitors connected"
+    echo "$mons_on monitors currently on"
+    if [[ "$mons_connected" -eq 3 && "$mons_on" -eq 1 ]]; then
+        echo "Using three monitor setting"
+        ~/.screenlayout/dell_dock_three.sh
+    else
+        echo "Using laptop setting"
+        ~/.screenlayout/laptop.sh
+    fi
+fi
