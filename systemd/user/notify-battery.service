@@ -3,4 +3,7 @@ Description=Check for low battery and notify if low or critical
 
 [Service]
 Type=simple
+Environment="CRITICAL_SOUND=/usr/share/sounds/freedesktop/stereo/suspend-error.oga"
+Environment="CRITICAL_LEVEL=15"
+Environment="LOW_LEVEL=30"
 ExecStart=%h/.bin/notify_low_battery.sh
