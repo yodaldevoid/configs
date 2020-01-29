@@ -17,22 +17,27 @@ if [[ -r "$HOME/.dbus/Xdbus" ]]; then
     source "$HOME/.dbus/Xdbus"
 fi
 
-battery_level="$(acpi -b | grep -v "Charging" | grep -P -o '([0-9]+(?=%))')"
+battery_level="$(acpi -b | grep -v "Charging" | grep -P -o '([0-9][0-9]:[0-9][0-9]:[0-9][0-9])')"
+# [[ $(date +%s -d $(acpi -b | grep -P -o '([0-9][0-9]:[0-9][0-9]:[0-9][0-9])')) -le $(date +%s -d "00:30") ]]
 
 if [[ -z "$battery_level" ]]; then
     exit 0
 fi
 
-if [[ "$battery_level" -le "$CRITICAL_LEVEL" ]]; then
-    notify-send -i "$CRITICAL_ICON" -t 15000 -u critical "Battery Critical" "Battery level is ${battery_level}%"
+current="$(date +%s -d "$battery_level")"
+low="$(date +%s -d "00:$LOW_LEVEL")"
+critical="$(date +%s -d "00:$CRITICAL_LEVEL")"
+
+if [[ "$current" -le "$critical" ]]; then
+    notify-send -i "$CRITICAL_ICON" -t 15000 -u critical "Battery Critical" "Battery charge allows for ${battery_level}"
     if [[ ! -z "$CRITICAL_SOUND" ]]; then
         $SOUND_COMMAND "$CRITICAL_SOUND"
     fi
     exit 0
 fi
 
-if [[ "$battery_level" -le "$LOW_LEVEL" ]]; then
-    notify-send -i "$LOW_LEVEL" -t 15000 -u normal "Battery Low" "Battery level is ${battery_level}%"
+if [[ "$current" -le "$low" ]]; then
+    notify-send -i "$LOW_ICON" -t 15000 -u normal "Battery Low" "Battery charge allows for ${battery_level}"
     if [[ ! -z "$LOW_SOUND" ]]; then
         $SOUND_COMMAND "$LOW_SOUND"
     fi
