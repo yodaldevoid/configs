@@ -8,6 +8,7 @@
 	rebase = true
 [core]
 	pager = less -x4
+	longpaths = true
 [init]
 	templateDir = ~/.config/git/templates
 [mergetool "Sublime Text"]
