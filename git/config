@@ -11,6 +11,7 @@
 	longpaths = true
 [init]
 	templateDir = ~/.config/git/templates
+	defaultbranch = main
 [mergetool "Sublime Text"]
 	cmd = subl -w $MERGED
 	trustExitCode = false
